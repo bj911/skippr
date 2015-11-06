@@ -1,0 +1,8 @@
+.users
+  %h1 Instagram usernames:
+  - @users.each do |user|
+    %p= link_to user.full_name, show_info_path(user.id, search_type: 'user')
+.tags
+  %h1 Instagram hashtags:
+  - @tags.each do |tag|
+    %p= link_to tag.name, show_info_path(tag.name, search_type: 'tag')

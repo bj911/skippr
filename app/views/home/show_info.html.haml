@@ -1,0 +1,20 @@
+- if @search_type == 'user'
+  %h3= @search_item.username
+  %p= image_tag @search_item.profile_picture
+  %h3= 'Total Followers: ' + @search_item.counts[:follows].to_s
+-else
+  %h3= link_to '#' + @search_item.name, "https://instagram.com/explore/tags/#{@search_item.name}/"
+  %h3= 'Total posts: ' + @search_item.media_count.to_s
+
+%h1= 'Liked photos in last week:'
+-@media_likes.each do |media|
+  .media
+    %p= image_tag media.images[:low_resolution][:url]
+    = 'Likes: ' + media.likes[:count].to_s
+.clear
+
+%h1= 'Commented photos in last week:'
+-@media_comments.each do |media|
+  .media
+    %p= image_tag media.images[:low_resolution][:url]
+    = 'Comments: ' + media.comments[:count].to_s
